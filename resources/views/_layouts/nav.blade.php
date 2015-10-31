@@ -14,7 +14,7 @@
                 </ul>
                 <form class="navbar-form navbar-right" role="search" action="/search" method="get">
                     <div class="form-group" id="navform">
-                        <input type="text" name="query" class="form-control" value="" placeholder="搜游戏/搜主播/搜平台" style="width: 250px">
+                        <input type="text" name="query" class="form-control" value="" placeholder="请输入关键词搜索" style="width: 250px">
                     </div>
                     <button type="submit" class="btn btn-default">搜索</button>
                 </form>
