@@ -118,7 +118,7 @@
             <a class="topbar-tab-text" href="/games?name=音乐游戏">音乐游戏</a>
         </div>
         <div class="topbar-tab">
-            <a class="topbar-tab-text" href="/games-dir">查看全部&gt;&gt;</a>
+            <a class="tab-link-text" href="/games-dir">查看更多&gt;&gt;</a>
         </div>
     </div>
 

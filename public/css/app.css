@@ -341,6 +341,10 @@ a:hover {
     color: #333;
 }
 
+.tab-link-text {
+    color: #337ab7;
+}
+
 .topbar-tab-selected .topbar-tab-text{
     color: #f80;
 }
@@ -374,7 +378,7 @@ a:hover {
 .list-item .site {
     margin-top: -8px;
     padding: 0 0;
-    background-color: #35DAFA;
+    background-color: #337ab7;
     color: #FFFFFF;
     font-size: 13px;
     position: relative;
