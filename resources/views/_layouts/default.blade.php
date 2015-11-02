@@ -79,11 +79,13 @@
         var query_val = $.getUrlParam('query');
         $("#navform input").val(query_val);
 
+        var total_num = parseInt($(".tit-total").text());
+
         $(window).on("load", function() {
             $(window).scroll(function(){
                 if (pathname != '/') {
                     var start = scrollside();
-                    if (start > 0) {
+                    if (start > 0 && start < total_num) {
                         var offset = 20;
                         var url = window.location.href;
                         $.get(url, {start: start, offset: offset}, function (data, textStatus) {
