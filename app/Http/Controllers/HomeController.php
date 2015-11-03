@@ -17,30 +17,32 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $start = 0;
-        $offset = 8;
+        // $start = 0;
+        // $offset = 8;
 
-        $live_num = DB::select('select live_nums as num from live_nums where live_name = "all"');
+        // $live_num = DB::select('select live_nums as num from live_nums where live_name = "all"');
 
-        $live_list = DB::select('select * from all_live_first_n where invalid = 0 order by viewers DESC limit ?,?', [$start, $offset]);
+        // $live_list = DB::select('select * from all_live_first_n where invalid = 0 order by viewers DESC limit ?,?', [$start, $offset]);
 
-        $games_num = DB::select('select count(*) as num from games_on where invalid = 0');
+        // $games_num = DB::select('select count(*) as num from games_on where invalid = 0');
 
-        $games_list = DB::select('select * from games_on limit 0, 12');
+        // $games_list = DB::select('select * from games_on limit 0, 12');
 
-        $viewers_num = DB::select('select live_viewers as num from live_viewers where live_name = "all"');
+        // $viewers_num = DB::select('select live_viewers as num from live_viewers where live_name = "all"');
 
-        $girls_live_num = DB::select('select live_nums as num from live_nums where live_name = "girls"');
+        // $girls_live_num = DB::select('select live_nums as num from live_nums where live_name = "girls"');
 
-        $girls_live_list = DB::select('select * from girls_live_first_n where category = ? and invalid = 0 order by viewers desc limit ?,?', ['美女', $start, $offset]);
+        // $girls_live_list = DB::select('select * from girls_live_first_n where category = ? and invalid = 0 order by viewers desc limit ?,?', ['美女', $start, $offset]);
 
-        $lol_live_num = DB::select('select live_nums as num from live_nums where live_name = "lol"');
+        // $lol_live_num = DB::select('select live_nums as num from live_nums where live_name = "lol"');
 
-        $lol_live_list = DB::select('select * from lol_live_first_n where category = ? and invalid = 0 order by viewers desc limit ?,?', ['英雄联盟', $start, $offset]);
+        // $lol_live_list = DB::select('select * from lol_live_first_n where category = ? and invalid = 0 order by viewers desc limit ?,?', ['英雄联盟', $start, $offset]);
 
-        return view('home', ['live_num' => $live_num, 'list' => $live_list, 'games_num' => $games_num,
-            'games' => $games_list, 'viewers_num' => $viewers_num, 'girls_live_num' => $girls_live_num,
-        'girls_live_list' => $girls_live_list, 'lol_live_num' => $lol_live_num, 'lol_live_list' => $lol_live_list]);
+        // return view('home', ['live_num' => $live_num, 'list' => $live_list, 'games_num' => $games_num,
+          //  'games' => $games_list, 'viewers_num' => $viewers_num, 'girls_live_num' => $girls_live_num,
+        // 'girls_live_list' => $girls_live_list, 'lol_live_num' => $lol_live_num, 'lol_live_list' => $lol_live_list]);
+
+        return view('test');
     }
 
     /**
