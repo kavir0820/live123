@@ -12,6 +12,8 @@
                 龙珠
             @elseif($item->sourcetype == 'huomao')
                 火猫
+            @elseif($item->sourcetype == 'panda')
+                熊猫
             @else
                 其它
             @endif
@@ -44,7 +46,7 @@
                 </div>
                 <div class="cate-type">
                     <div class="cate">
-                        <em>{{substr($item->category, 0, 12)}}</em>
+                        <em>{{substr($item->category, 0, 18)}}</em>
                     </div>
                 </div>
             </div>

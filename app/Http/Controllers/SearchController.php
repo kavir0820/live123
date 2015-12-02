@@ -20,7 +20,7 @@ class SearchController extends Controller
         $offset = Input::get('offset');
         $offset = $offset ? $offset : 32;
 
-        $live_list = SphinxQL::query()->select()->from('index_live')->match($query)->where('invalid', 0)->orderBy('viewers', 'desc')->limit($start, $offset)->execute();
+        $live_list = SphinxQL::query()->select()->from('index_live')->match('*', $query)->where('invalid', 0)->orderBy('viewers', 'desc')->limit($start, $offset)->execute();
         $live_list = json_decode(json_encode($live_list), false);
 
         if(Request::ajax()) {

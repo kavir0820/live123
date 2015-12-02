@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>直播123--全网直播数据导航</title>
+    <meta name="title" content="直播123_最专业的全网直播导航">
+    <meta name="keywords" content="直播,游戏直播,全网直播,直播导航,英雄联盟,dota,炉石传说,直播大全,魔兽世界,我的世界,小智,若风,斗鱼,战旗,虎牙,yy,火猫,熊猫,直播平台,lyingman,美女主播,户外直播,影视直播,穿越火线,地下城与勇士,星际争霸">
+    <meta name="description" content="直播123为目前最专业的全网直播导航,为用户提供所有主流直播平台如斗鱼、战旗、虎牙、龙珠、火猫、熊猫等，并且分门别类整理，用户可以非常方便的找到感兴趣的直播数据以及每天的精彩视频">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet">
 </head>
