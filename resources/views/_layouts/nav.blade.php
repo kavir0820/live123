@@ -6,7 +6,6 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav" id="nav-tab">
-                    <!--<li class="active"><a href="/">首页</a></li>-->
                     <li><a href="/">首页</a></li>
                     <li><a href="/games">游戏专区</a></li>
                     <li><a href="/girls">美女专区</a></li>

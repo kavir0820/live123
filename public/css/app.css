@@ -20,8 +20,7 @@ a:hover {
 }
 
 .thumbnail:hover {
-    padding: 3px;
-    border: 2px solid;
+    padding: 2px;
 }
 
 a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {

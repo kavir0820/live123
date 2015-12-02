@@ -2,21 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Request;
-use Response;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-//use App\Games;
+use Request;
+use Response;
 use DB;
-use Illuminate\Support\Facades\Input;
+use Input;
+use SphinxQL;
 
 class GamesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $name = Input::get('name');
@@ -27,16 +22,20 @@ class GamesController extends Controller
         $offset = $offset ? $offset : 32;
 
         if ($name == null || $name == '' || $name == '全部') {
-            $live_num = DB::select('select count(*) as num from live_on where invalid = 0');
-            $live_list = DB::select('select * from live_on where invalid = 0 order by viewers DESC limit ?,?', [$start, $offset]);
+            $live_list = SphinxQL::query()->select()->from('index_live')->where('invalid', 0)->orderBy('viewers', 'desc')->limit($start, $offset)->execute();
+            $live_list = json_decode(json_encode($live_list), false);
         } else {
-            $live_num = DB::select('select count(*) as num from live_on where invalid = 0 and category like "%'.$name.'"');
-            $live_list = DB::select('select * from live_on where category like "%'.$name.'%" and invalid = 0 order by viewers DESC limit ?,?', [$start, $offset]);
+            $live_list = SphinxQL::query()->select()->from('index_live')->match('category', $name)->where('invalid', 0)->orderBy('viewers', 'desc')->limit($start, $offset)->execute();
+            $live_list = json_decode(json_encode($live_list), false);
         }
 
         if(Request::ajax()) {
             return view('list_scroll', ['list' => $live_list]);
         }
+
+        $live_num = SphinxQL::raw('show meta');
+        $live_num = json_decode(json_encode($live_num), false);
+
         return view('games', ['live_num' => $live_num, 'list' => $live_list]);
     }
 

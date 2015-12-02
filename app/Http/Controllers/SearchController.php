@@ -2,20 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Request;
-use Reponse;
-use DB;
-use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Request;
+use Reponse;
+use Input;
+use SphinxQL;
 
 class SearchController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $query = Input::get('query');
@@ -25,7 +20,8 @@ class SearchController extends Controller
         $offset = Input::get('offset');
         $offset = $offset ? $offset : 32;
 
-        $live_list = DB::select('select * from live_on where concat(`title`,`anchor`,`category`,`sourcename`) like "%'.$query.'%" and invalid = 0 order by viewers DESC limit ?,?', [$start, $offset]);
+        $live_list = SphinxQL::query()->select()->from('index_live')->match($query)->where('invalid', 0)->orderBy('viewers', 'desc')->limit($start, $offset)->execute();
+        $live_list = json_decode(json_encode($live_list), false);
 
         if(Request::ajax()) {
             return view('list_scroll', ['list' => $live_list]);

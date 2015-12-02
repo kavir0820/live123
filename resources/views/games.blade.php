@@ -125,7 +125,7 @@
     <div class="container living-con">
         <div class="living-tit">
             <h3 class="all-lives">全部直播</h3>
-            <span class="living-tit-info">共<span class="tit-total">{{$live_num[0]->num}}</span>场直播</span>
+            <span class="living-tit-info">共<span class="tit-total">{{$live_num[1]->Value}}</span>场直播</span>
         </div>
         <div class="living-item">
             <div class="row">

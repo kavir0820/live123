@@ -2,20 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Request;
-use Response;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Input;
-use DB;
+use Request;
+use Response;
+use Input;
+use Log;
+use SphinxQL;
 
 class MoviesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $start = Input::get('start');
@@ -23,13 +19,16 @@ class MoviesController extends Controller
         $offset = Input::get('offset');
         $offset = $offset ? $offset : 32;
 
-        $live_num = DB::select('select count(*) as num from live_on where invalid = 0 and category = ?', ['影视']);
-        $live_list = DB::select('select * from live_on where category = ? and invalid = 0 order by viewers desc limit ?,?', ['影视', $start, $offset]);
+        $live_list = SphinxQL::query()->select()->from('index_live')->match('category', '影视')->where('invalid', 0)->orderBy('viewers', 'desc')->limit($start, $offset)->execute();
+        $live_list = json_decode(json_encode($live_list), false);
 
         if(Request::ajax()) {
             return view('list_scroll', ['list' => $live_list]);
         }
-        
+
+        $live_num = SphinxQL::raw('show meta');
+        $live_num = json_decode(json_encode($live_num), false);
+
         return view('movies', ['live_num' => $live_num, 'list' => $live_list]);
     }
 
