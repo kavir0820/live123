@@ -46,7 +46,7 @@
                 </div>
                 <div class="cate-type">
                     <div class="cate">
-                        <em>{{substr($item->category, 0, 18)}}</em>
+                        <em>{{mb_substr($item->category, 0, 7)}}</em>
                     </div>
                 </div>
             </div>
