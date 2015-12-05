@@ -2,36 +2,6 @@
 @extends('_layouts.default')
 
 @section('content')
-    {{--<div class="container content-header">--}}
-        {{--<div class="game-filter">--}}
-            {{--<div class="filter-header">--}}
-                {{--<h4>游戏:</h4>--}}
-            {{--</div>--}}
-            {{--<div class="filter-content">--}}
-                {{--<ul class="nav nav-pills" id="filtertab">--}}
-                    {{--<li role="presentation" class="active"><a href="/games?name=全部">全部</a></li>--}}
-                    {{--<li role="presentation"><a href="/games?name=英雄联盟">英雄联盟</a></li>--}}
-                    {{--<li role="presentation"><a href="/games?name=DOTA">DOTA</a></li>--}}
-                    {{--<li role="presentation"><a href="/games?name=炉石传说">炉石传说</a></li>--}}
-                    {{--<li role="presentation"><a href="/games?name=穿越火线">穿越火线</a></li>--}}
-                    {{--<li role="presentation"><a href="/games?name=地下城与勇士">地下城与勇士</a></li>--}}
-                    {{--<li role="presentation"><a href="/games?name=我的世界">我的世界</a></li>--}}
-                    {{--<li role="presentation"><a href="/games?name=魔兽世界">魔兽世界</a></li>--}}
-                    {{--<li role="presentation"><a href="/games?name=星际争霸">星际争霸</a></li>--}}
-                    {{--<li role="presentation"><a href="/games?name=风暴英雄">风暴英雄</a></li>--}}
-                    {{--<li role="presentation"><a href="/games?name=魔兽争霸">魔兽争霸</a></li>--}}
-                    {{--<li role="presentation"><a href="/games?name=三国杀">三国杀</a></li>--}}
-                    {{--<li role="presentation"><a href="/games?name=棋牌">棋牌竞技</a></li>--}}
-                    {{--<li role="presentation"><a href="/games?name=格斗游戏">格斗游戏</a></li>--}}
-                    {{--<li role="presentation"><a href="/games?name=主机游戏">主机游戏</a></li>--}}
-                    {{--<li role="presentation"><a href="/games?name=剑灵">剑灵</a></li>--}}
-                    {{--<li role="presentation"><a href="/games?name=怀旧游戏">怀旧游戏</a></li>--}}
-                    {{--<li role="presentation"><a href="/games?name=跑跑卡丁车">跑跑卡丁车</a></li>--}}
-                {{--</ul>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-
     <div class="container topbar-tabs">
         <div class="topbar-tab topbar-tab-selected">
             <a class="topbar-tab-text" href="/games?name=全部">全部</a>
@@ -134,6 +104,11 @@
                 @endforeach
             </div>
         </div>
+        {{--<div class="load-more">--}}
+        {{--<span>点击加载更多</span>--}}
+        {{--</div>--}}
+        <div class="page-loading">
+            <span>努力加载中...</span>
+        </div>
     </div>
-
 @endsection

@@ -15,6 +15,12 @@
                 @endforeach
             </div>
         </div>
+        {{--<div class="load-more">--}}
+            {{--<span>点击加载更多</span>--}}
+        {{--</div>--}}
+        <div class="page-loading">
+            <span>努力加载中...</span>
+        </div>
     </div>
 
 @endsection

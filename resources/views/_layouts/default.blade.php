@@ -13,45 +13,39 @@
 </head>
 <body>
 
-@include('_layouts.nav')
+@include('_layouts.header')
 
 <div class="myBody">
     @yield('content')
 </div>
 
-@include('_layouts.footer')
-
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
 <script>
+
     $("img.lazy").lazyload({ threshold : 200 });
-</script>
-<script>
-    $(function () {
-        (function ($) {
-            $.getUrlParam = function (param_name) {
-                var reg = new RegExp("(^|&)" + param_name + "=([^&]*)(&|$)");
-                var res = window.location.search.substr(1).match(reg);
-                if (res != null) return decodeURI(res[2]);
-                return null;
-            }
-        })(jQuery);
-    });
+
+    function getUrlParam(param_name) {
+        var reg = new RegExp("(^|&)" + param_name + "=([^&]*)(&|$)");
+        var res = window.location.search.substr(1).match(reg);
+        if (res != null) return decodeURI(res[2]);
+        return null;
+    }
 
     function scrollside() {
         var items = $(".list-item");
-        var lastitemHeight = items.last().get(0).offsetHeight;
         var scrollHeight = $(window).scrollTop();
         var documentHeight = $(document).height();
         var windowHeight = $(window).height();
-        return (scrollHeight + lastitemHeight + windowHeight) > documentHeight ? items.length : -1;
+        return (scrollHeight + windowHeight) >= documentHeight ? items.length : -1;
     }
 </script>
 <script>
     $(document).ready(function() {
         var pathname = window.location.pathname;
-        var param_name = $.getUrlParam('name');
+        var param_name = getUrlParam('name');
         $("#nav-tab li").each(function () {
             if ($(this).hasClass("active")) {
                 $(this).removeClass("active");
@@ -79,30 +73,68 @@
             $(".living-tit h3").html((param_name != null && param_name != "全部") ? param_name : "全部直播");
         }
 
-        var query_val = $.getUrlParam('query');
+        var query_val = getUrlParam('query');
         $("#navform input").val(query_val);
 
         var total_num = parseInt($(".tit-total").text());
+//        var load_num = $(".list-item").length;
+//        if (load_num < total_num) {
+//            // 显示加载更多模块
+//            $(".load-more").show();
+//        }
+//        $(".load-more").click(function () {
+//            // 隐藏加载更多模块
+//            $(".load-more").hide();
+//            // 显示正在加载模块
+//            $(".page-loading").show();
+//            // 加载数据
+//            var start = $(".list-item").length;
+//            var offset = 32;
+//            var url = window.location.href;
+//            $.get(url, {start: start, offset: offset}, function (data, textStatus) {
+////                console.log(textStatus);
+//                if (textStatus == 'success') {
+//                    var row = $(".row");
+//                    var list_html = $.parseHTML(data);
+//                    $(".row").append(list_html);
+//                    $("img.lazy").lazyload({threshold: 200});
+//
+//                    // 隐藏正在加载模块
+//                    $(".page-loading").hide();
+//                    // 判断是否需要显示加载更多模块
+//                    load_num = $(".list-item").length;
+//                    if (load_num < total_num) {
+//                        // 显示加载更多模块
+//                        $(".load-more").show();
+//                    }
+//                }
+//            });
+//        });
 
-        $(window).on("load", function() {
-            $(window).scroll(function(){
-                if (pathname != '/') {
-                    var start = scrollside();
-                    if (start > 0 && start < total_num) {
-                        var offset = 20;
-                        var url = window.location.href;
-                        $.get(url, {start: start, offset: offset}, function (data, textStatus) {
-                            if (textStatus == 'success') {
-                                var row = $(".row");
-                                var list_html = $.parseHTML(data);
-                                $(".row").append(list_html);
-                                $("img.lazy").lazyload({threshold: 200});
-                            }
-                        });
-                    }
+        var ajax_status = false;
+        $(window).bind("scroll", function() {
+            if (pathname != '/' && !ajax_status) {
+                var start = scrollside();
+                if (start > 0 && start < total_num) {
+                    // 显示正在加载模块
+                    $(".page-loading").show();
+                    var offset = 32;
+                    var url = window.location.href;
+                    ajax_status = true;
+                    $.get(url, {start: start, offset: offset}, function (data, textStatus) {
+                        if (textStatus == 'success') {
+                            var row = $(".row");
+                            var list_html = $.parseHTML(data);
+                            $(".row").append(list_html);
+                            $("img.lazy").lazyload({threshold: 200});
+                            // 隐藏正在加载模块
+                            $(".page-loading").hide();
+                        }
+                        ajax_status = false;
+                    });
                 }
-            })
-        });
+            }
+        })
     });
 </script>
 <script>

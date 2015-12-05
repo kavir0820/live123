@@ -13,10 +13,13 @@
                 龙珠
             @elseif($item->sourcetype == 'huomao')
                 火猫
+            @elseif($item->sourcetype == 'panda')
+                熊猫
             @else
                 其它
             @endif
         </div>
+        <img class="img-responsive icon-play" src="{{url('/images/playicon.png')}}"/>
         <div class="caption mes">
             <div class="mes-title">
                 <h1 class="text-left">{{$item->title}}</h1>

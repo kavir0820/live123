@@ -89,4 +89,8 @@
         </div>
     </div>
     <!-- 美女主播模块结束 -->
+
+    @include('_layouts.footer')
+
 @endsection
+
