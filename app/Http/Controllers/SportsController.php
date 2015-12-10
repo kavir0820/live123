@@ -29,7 +29,7 @@ class SportsController extends Controller
         $live_num = SphinxQL::raw('show meta');
         $live_num = json_decode(json_encode($live_num), false);
 
-        return view('sports', ['live_num' => $live_num, 'list' => $live_list]);
+        return view('sports', ['live_num' => $live_num, 'list' => $live_list, 'nav_tab_index' => 4, 'query' => '']);
     }
 
     /**

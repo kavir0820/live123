@@ -30,7 +30,7 @@ class SearchController extends Controller
         $live_num = SphinxQL::raw('show meta');
         $live_num = json_decode(json_encode($live_num), false);
 
-        return view('search', ['live_num' => $live_num, 'list' => $live_list, 'query' => $query]);
+        return view('search', ['live_num' => $live_num, 'list' => $live_list, 'nav_tab_index' => '-1', 'query' => $query]);
     }
 
     /**

@@ -45,36 +45,36 @@
 <script>
     $(document).ready(function() {
         var pathname = window.location.pathname;
-        var param_name = getUrlParam('name');
-        $("#nav-tab li").each(function () {
-            if ($(this).hasClass("active")) {
-                $(this).removeClass("active");
-            }
-            var cur_href = $(this).children("a").attr("href");
-            if (cur_href == pathname) {
-                $(this).addClass("active");
-                return false;
-            }
-        });
+        // var param_name = getUrlParam('name');
+        // $("#nav-tab li").each(function () {
+        //     if ($(this).hasClass("active")) {
+        //         $(this).removeClass("active");
+        //     }
+        //     var cur_href = $(this).children("a").attr("href");
+        //     if (cur_href == pathname) {
+        //         $(this).addClass("active");
+        //         return false;
+        //     }
+        // });
 
-        if (pathname == '/games') {
-            // 设置游戏专区下的游戏筛选标签
-            $(".topbar-tabs .topbar-tab").each(function () {
-                if ($(this).hasClass("topbar-tab-selected") && param_name != null) {
-                    $(this).removeClass("topbar-tab-selected");
-                }
-                var cur_href = $(this).children("a").attr("href");
-                if (cur_href.indexOf(param_name) >= 0) {
-                    $(this).addClass("topbar-tab-selected");
-                    return false;
-                }
-            });
-            // 设置living-tit下的h3内容
-            $(".living-tit h3").html((param_name != null && param_name != "全部") ? param_name : "全部直播");
-        }
+        // if (pathname == '/games') {
+        //     // 设置游戏专区下的游戏筛选标签
+        //     $(".topbar-tabs .topbar-tab").each(function () {
+        //         if ($(this).hasClass("topbar-tab-selected") && param_name != null) {
+        //             $(this).removeClass("topbar-tab-selected");
+        //         }
+        //         var cur_href = $(this).children("a").attr("href");
+        //         if (cur_href.indexOf(param_name) >= 0) {
+        //             $(this).addClass("topbar-tab-selected");
+        //             return false;
+        //         }
+        //     });
+        //     // 设置living-tit下的h3内容
+        //     $(".living-tit h3").html((param_name != null && param_name != "全部") ? param_name : "全部直播");
+        // }
 
-        var query_val = getUrlParam('query');
-        $("#navform input").val(query_val);
+        // var query_val = getUrlParam('query');
+        // $("#navform input").val(query_val);
 
         var total_num = parseInt($(".tit-total").text());
 //        var load_num = $(".list-item").length;

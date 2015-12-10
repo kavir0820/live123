@@ -29,7 +29,7 @@ class GirlsController extends Controller
         $live_num = SphinxQL::raw('show meta');
         $live_num = json_decode(json_encode($live_num), false);
 
-        return view('girls', ['live_num' => $live_num, 'list' => $live_list]);
+        return view('girls', ['live_num' => $live_num, 'list' => $live_list, 'nav_tab_index' => 2, 'query' => '']);
     }
 
     /**

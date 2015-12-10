@@ -29,7 +29,7 @@ class MoviesController extends Controller
         $live_num = SphinxQL::raw('show meta');
         $live_num = json_decode(json_encode($live_num), false);
 
-        return view('movies', ['live_num' => $live_num, 'list' => $live_list]);
+        return view('movies', ['live_num' => $live_num, 'list' => $live_list, 'nav_tab_index' => 3, 'query' => '']);
     }
 
     /**

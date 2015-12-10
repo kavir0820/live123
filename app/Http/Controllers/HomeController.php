@@ -35,9 +35,8 @@ class HomeController extends Controller
 
         return view('home', ['live_num' => $live_num, 'list' => $live_list, 'games_num' => $games_num,
         'games' => $games_list, 'viewers_num' => $viewers_num, 'girls_live_num' => $girls_live_num,
-        'girls_live_list' => $girls_live_list, 'lol_live_num' => $lol_live_num, 'lol_live_list' => $lol_live_list]);
-
-        // return view('test');
+        'girls_live_list' => $girls_live_list, 'lol_live_num' => $lol_live_num, 'lol_live_list' => $lol_live_list,
+            'nav_tab_index' => 0, 'query' => '']);
     }
 
     /**
