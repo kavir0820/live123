@@ -26,7 +26,11 @@ class SearchController extends Controller
         if(Request::ajax()) {
             return view('list_scroll', ['list' => $live_list]);
         }
-        return view('search', ['list' => $live_list]);
+
+        $live_num = SphinxQL::raw('show meta');
+        $live_num = json_decode(json_encode($live_num), false);
+
+        return view('search', ['live_num' => $live_num, 'list' => $live_list, 'query' => $query]);
     }
 
     /**
