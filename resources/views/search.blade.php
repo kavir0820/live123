@@ -6,7 +6,7 @@
     <div class="container living-con">
         <div class="living-tit">
             <h3 class="all-lives">"{{$query}}"</h3>
-            <span class="living-tit-info">共为您找到相关的&nbsp;<span class="tit-total">{{$live_num[1]->Value}}</span>&nbsp;场直播</span>
+            <span class="living-tit-info">相关的共有&nbsp;<span class="tit-total">{{$live_num[1]->Value}}</span>&nbsp;场直播</span>
         </div>
         <div class="living-item">
             <div class="row">
