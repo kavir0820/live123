@@ -22,6 +22,7 @@ class GamesController extends Controller
         $offset = $offset ? $offset : 32;
 
         if ($name == null || $name == '' || $name == '全部') {
+            $name = '全部直播';
             $live_list = SphinxQL::query()->select()->from('index_live')->where('invalid', 0)->orderBy('viewers', 'desc')->limit($start, $offset)->execute();
             $live_list = json_decode(json_encode($live_list), false);
         } else {
